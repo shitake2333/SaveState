@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    SaveState.Shared - the contract layer (attributes / abstract base classes / interfaces / result types).
+    Deliberately has **no dependency** on System.Text.Json and no dependency on any engine: any host (Godot / Unity /
+    console / server) can reference just this one.
+  -->
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
+    <RootNamespace>SaveState</RootNamespace>
+    <AssemblyName>SaveState.Shared</AssemblyName>
+    <PackageId>SaveState.Shared</PackageId>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Version.props" />
+
+</Project>

@@ -1,0 +1,31 @@
+﻿<Project Sdk="Godot.NET.Sdk/4.7.2">
+
+  <!--
+    SaveState.Godot —— Godot 4 adapter.
+
+    Three things a Godot host should not have to write by itself:
+      * a save store rooted at user:// (GodotSaveStore),
+      * a logger that reaches Godot's own output (GodotSaveLogger),
+      * the "is this a real game run?" predicate used to gate auto-saves (GodotRuntime + GodotSavePolicy).
+
+    Built against Godot 4.7 (.NET 10). Consumers must be Godot projects built with the same
+    Godot.NET.Sdk, because this package compiles against GodotSharp.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>SaveState.Godot</RootNamespace>
+    <AssemblyName>SaveState.Godot</AssemblyName>
+    <PackageId>SaveState.Godot</PackageId>
+    <IsPackable>true</IsPackable>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <Description>Godot 4 adapter for SaveState: user:// save store, Godot output logger, and a runtime-process gate for auto-saving.</Description>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Version.props" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\SaveState.Shared\SaveState.Shared.csproj" />
+    <ProjectReference Include="..\SaveState.Runtime\SaveState.Runtime.csproj" />
+  </ItemGroup>
+
+</Project>

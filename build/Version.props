@@ -1,0 +1,14 @@
+﻿<Project>
+
+  <!--
+    One version number for everything: all packages move in lockstep
+    (the generator and the runtime must match, see DESIGN §7 "version policy").
+    Bump it in this single place when releasing; CI can also override it with -p:Version=....
+  -->
+  <PropertyGroup>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <VersionSuffix>alpha.1</VersionSuffix>
+    <Version>$(VersionPrefix)-$(VersionSuffix)</Version>
+  </PropertyGroup>
+
+</Project>

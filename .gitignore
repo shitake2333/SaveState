@@ -1,0 +1,18 @@
+﻿# build output
+bin/
+obj/
+artifacts/
+*.nupkg
+*.snupkg
+
+# IDE
+.vs/
+.idea/
+*.user
+
+# test output
+TestResults/
+
+# secrets — never commit these (the NuGet API key lives here)
+.env
+.env.*

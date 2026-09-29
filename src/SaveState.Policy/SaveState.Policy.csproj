@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    SaveState.Policy - the optional policy package: it separates the policy of "when to actually write to disk" from the core.
+    The core only provides the primitives (Load/Save/EnsureCreated) and the policy belongs to the host; what is offered here is the most common one: merging + debouncing.
+  -->
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
+    <RootNamespace>SaveState.Policy</RootNamespace>
+    <AssemblyName>SaveState.Policy</AssemblyName>
+    <PackageId>SaveState.Policy</PackageId>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Version.props" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\SaveState.Shared\SaveState.Shared.csproj" />
+    <ProjectReference Include="..\SaveState.Runtime\SaveState.Runtime.csproj" />
+  </ItemGroup>
+
+</Project>

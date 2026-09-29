@@ -1,0 +1,36 @@
+﻿<Project>
+
+  <!--
+    Repository-wide common properties. Deliberately only the settings that are
+    identical for every project: TargetFramework is deliberately NOT set here, because each project
+    has its own baseline (see the "Target frameworks" section of the README).
+  -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <DebugType>portable</DebugType>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <!-- Package metadata (for open-source distribution; the version number is set in one place in build/Version.props) -->
+  <PropertyGroup>
+    <Product>SaveState</Product>
+    <Authors>SaveState contributors</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/shitake2333/SaveState</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/shitake2333/SaveState</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>save;serialization;source-generator;state;json</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Description>Project-agnostic state + save/load framework: incremental source generator for strongly typed save files, with lenient loading (missing sections are repaired, never null) and explicit write points.</Description>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsPackable)' != 'false'">
+    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="\" Visible="false" />
+  </ItemGroup>
+
+</Project>

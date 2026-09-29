@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    SaveState.DependencyInjection —— Microsoft.Extensions.DependencyInjection integration.
+
+    Deliberately thin: it only wires the container to the framework's own pieces
+    (ISaveStore / ISaveLogger / ISaveMigration / SaveRegistry) and offers a factory for
+    SaveFileSession<TFile>. It never depends on the generated code — the generated registration helper
+    is passed in as a delegate, so the library stays container-agnostic and reflection-free.
+  -->
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
+    <RootNamespace>SaveState.DependencyInjection</RootNamespace>
+    <AssemblyName>SaveState.DependencyInjection</AssemblyName>
+    <PackageId>SaveState.DependencyInjection</PackageId>
+    <IsPackable>true</IsPackable>
+    <Description>Microsoft.Extensions.DependencyInjection integration for SaveState.</Description>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Version.props" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\SaveState.Shared\SaveState.Shared.csproj" />
+    <ProjectReference Include="..\SaveState.Runtime\SaveState.Runtime.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.10" />
+  </ItemGroup>
+
+</Project>

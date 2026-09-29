@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Container-integration tests. Kept in their own project so the container package can be tested
+    without pulling Microsoft.Extensions.DependencyInjection into the framework's core test project.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>SaveState.DependencyInjection.Tests</RootNamespace>
+    <AssemblyName>SaveState.DependencyInjection.Tests</AssemblyName>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Version.props" />
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\SaveState.Shared\SaveState.Shared.csproj" />
+    <ProjectReference Include="..\..\src\SaveState.Runtime\SaveState.Runtime.csproj" />
+    <ProjectReference Include="..\..\src\SaveState.DependencyInjection\SaveState.DependencyInjection.csproj" />
+    <ProjectReference Include="..\..\src\SaveState.Generator\SaveState.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+</Project>

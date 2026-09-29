@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    SaveState.Generator - incremental source generator (shipped as an analyzer package: analyzers/dotnet/cs).
+    Deliberately netstandard2.0 only: an analyzer must be loadable by any host compiler.
+  -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>SaveState.Generator</RootNamespace>
+    <AssemblyName>SaveState.Generator</AssemblyName>
+    <PackageId>SaveState.Generator</PackageId>
+    <IsPackable>true</IsPackable>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <IsRoslynComponent>true</IsRoslynComponent>
+    <!-- RS1036/RS2008 are handled explicitly instead of suppressed: RS1036 is satisfied by
+         EnforceExtendedAnalyzerRules, and RS2008 by the release-tracking files below (validated by
+         Microsoft.CodeAnalysis.Analyzers, so the tables cannot drift away from the descriptors). -->
+    <NoWarn>$(NoWarn);RS1036</NoWarn>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Version.props" />
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- Analyzer release tracking: the rule tables are checked against the declared descriptors at build time. -->
+  <ItemGroup>
+    <AdditionalFiles Include="AnalyzerReleases.Shipped.md" />
+    <AdditionalFiles Include="AnalyzerReleases.Unshipped.md" />
+    <None Include="AnalyzerReleases.Shipped.md" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="AnalyzerReleases.Unshipped.md" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  </ItemGroup>
+
+  <!-- The in-repo test project drives the generator in-process and unit-tests its internal helpers. -->
+  <ItemGroup>
+    <InternalsVisibleTo Include="SaveState.Tests" />
+  </ItemGroup>
+
+  <!-- When packing, put the generator DLL into analyzers/dotnet/cs (the host can use it right after referencing it). -->
+  <ItemGroup>
+    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  </ItemGroup>
+
+</Project>

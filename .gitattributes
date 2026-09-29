@@ -1,0 +1,13 @@
+# Keep one line-ending policy in the repository (LF) so Windows checkouts do not churn.
+* text=auto eol=lf
+
+# Windows tooling prefers CRLF for these.
+*.sln text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Never touch these.
+*.png binary
+*.jpg binary
+*.ico binary
+*.nupkg binary
