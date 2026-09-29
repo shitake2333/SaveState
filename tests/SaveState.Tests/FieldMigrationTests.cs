@@ -216,7 +216,7 @@ public class FieldMigrationTests
     {
         var scalar = Parse("{\"Tags\":\"solo\"}");
         new FieldMigration("profile.json", 1).Convert("Tags", "Tags", JsonUpgrade.ToArray()).Apply(scalar);
-        Assert.Equal(1, ((JsonArray)scalar["Tags"]!).Count);
+        Assert.Single((JsonArray)scalar["Tags"]!);
         Assert.Equal("solo", (string)scalar["Tags"]![0]!);
 
         var array = Parse("{\"Tags\":[\"a\",\"b\"]}");

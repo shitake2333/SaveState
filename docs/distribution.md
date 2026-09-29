@@ -42,10 +42,10 @@ dotnet pack SaveState.sln -c Release -o D:\path\to\local-nuget
 In the consumer:
 
 ```xml
-<PackageReference Include="SaveState.Shared" Version="0.1.0-alpha.1" />
-<PackageReference Include="SaveState.Runtime" Version="0.1.0-alpha.1" />
-<PackageReference Include="SaveState.Godot" Version="0.1.0-alpha.1" />
-<PackageReference Include="SaveState.Generator" Version="0.1.0-alpha.1" PrivateAssets="all" />
+<PackageReference Include="SaveState.Shared" Version="0.1.0" />
+<PackageReference Include="SaveState.Runtime" Version="0.1.0" />
+<PackageReference Include="SaveState.Godot" Version="0.1.0" />
+<PackageReference Include="SaveState.Generator" Version="0.1.0" PrivateAssets="all" />
 ```
 
 > **Re-packing the same version?** NuGet caches a package by id + version in the global packages folder

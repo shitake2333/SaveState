@@ -19,15 +19,15 @@ plain classes into strongly-typed save files, plus a runtime with **lenient, sel
 
 ## Documentation
 
-**[docs/](docs/README.md)** — start here for anything beyond the quick start:
+**[docs/](https://github.com/shitake2333/SaveState/blob/main/docs/README.md)** — start here for anything beyond the quick start:
 
 | Document | Contents |
 |---|---|
-| [Getting started](docs/getting-started.md) | a working save file in five minutes; the first-launch / save / load flow; testing your host |
-| [API reference](docs/api.md) | every public type and member, the generated members, the diagnostics, the file format |
-| [Migrations](docs/migrations.md) | versioning rules and the declarative "old field → new field + conversion" upgrades |
-| [Adapters](docs/adapters.md) | writing an `ISaveStore` for your engine, the Godot adapter, container wiring, host-side write policy |
-| [Distribution](docs/distribution.md) | build/test/pack, local feeds, the same-version NuGet cache pitfall, release checklist |
+| [Getting started](https://github.com/shitake2333/SaveState/blob/main/docs/getting-started.md) | a working save file in five minutes; the first-launch / save / load flow; testing your host |
+| [API reference](https://github.com/shitake2333/SaveState/blob/main/docs/api.md) | every public type and member, the generated members, the diagnostics, the file format |
+| [Migrations](https://github.com/shitake2333/SaveState/blob/main/docs/migrations.md) | versioning rules and the declarative "old field → new field + conversion" upgrades |
+| [Adapters](https://github.com/shitake2333/SaveState/blob/main/docs/adapters.md) | writing an `ISaveStore` for your engine, the Godot adapter, container wiring, host-side write policy |
+| [Distribution](https://github.com/shitake2333/SaveState/blob/main/docs/distribution.md) | build/test/pack, local feeds, the same-version NuGet cache pitfall, release checklist |
 
 Runnable example: `samples/SaveState.Samples.Console` (first launch → atomic write → reload → legacy file repair).
 
@@ -142,10 +142,10 @@ mutating it. `AsyncSaveScheduler` splits the two: the **snapshot** happens on th
 **write** on a worker, and a burst of requests collapses into the newest state.
 
 ```csharp
-using var async = session.ScheduleAsync(logger);
+using var asyncSave = session.ScheduleAsync(logger);
 
-async.RequestSave();       // snapshot here, write on a worker; safe to call in a burst
-async.Flush();             // before quitting: blocks until the pending write lands
+asyncSave.RequestSave();   // snapshot here, write on a worker; safe to call in a burst
+asyncSave.Flush();         // before quitting: blocks until the pending write lands
 ```
 
 `SaveFileSession` exposes the two halves directly (`SerializeSnapshot()` / `WriteSnapshot(json)`) if you

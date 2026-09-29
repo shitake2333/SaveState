@@ -52,11 +52,11 @@ cat > Consumer.csproj <<'EOF'
     <Version>1.0.0</Version>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="SaveState.Shared" Version="0.1.0-alpha.1" />
-    <PackageReference Include="SaveState.Runtime" Version="0.1.0-alpha.1" />
-    <PackageReference Include="SaveState.Policy" Version="0.1.0-alpha.1" />
-    <PackageReference Include="SaveState.DependencyInjection" Version="0.1.0-alpha.1" />
-    <PackageReference Include="SaveState.Generator" Version="0.1.0-alpha.1" PrivateAssets="all" />
+    <PackageReference Include="SaveState.Shared" Version="0.1.0" />
+    <PackageReference Include="SaveState.Runtime" Version="0.1.0" />
+    <PackageReference Include="SaveState.Policy" Version="0.1.0" />
+    <PackageReference Include="SaveState.DependencyInjection" Version="0.1.0" />
+    <PackageReference Include="SaveState.Generator" Version="0.1.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.10" />
   </ItemGroup>
 </Project>

@@ -24,13 +24,21 @@
     <RepositoryUrl>https://github.com/shitake2333/SaveState</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>save;serialization;source-generator;state;json</PackageTags>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
     <NeutralLanguage>en</NeutralLanguage>
     <Description>Project-agnostic state + save/load framework: incremental source generator for strongly typed save files, with lenient loading (missing sections are repaired, never null) and explicit write points.</Description>
   </PropertyGroup>
 
+  <!--
+    Each package ships its own PACKAGE.md as the readme (nuget.org renders it on the package page), so the
+    text can be about that package and its links can be absolute URLs. The repository README stays the
+    front page on GitHub.
+  -->
+  <PropertyGroup>
+    <PackageReadmeFile>PACKAGE.md</PackageReadmeFile>
+  </PropertyGroup>
+
   <ItemGroup Condition="'$(IsPackable)' != 'false'">
-    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="\" Visible="false" />
+    <None Include="$(MSBuildProjectDirectory)\PACKAGE.md" Pack="true" PackagePath="\" Visible="false" />
   </ItemGroup>
 
 </Project>
